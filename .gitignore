@@ -1,9 +1,45 @@
+# .gitignore — summary of changes and rationale
+# Added by GitHub Copilot: summary + common ignores to keep the repository clean.
+# Summary: ignore editor/project settings, virtual environments, build artifacts,
+# and local credentials/temp files that should not be committed.
+# Added: .vscode/, .idea/, node_modules/, *.env, .venv, venv/, __pycache__/,
+# *.pyc, *.log, *.bak, *.tmp, *.swp, *.DS_Store, Thumbs.db, *.zip (local zips),
+# local Office temp files (e.g. ~$*), and the existing secrets/ entry.
+# Rationale: prevent accidental commits of credentials, editor-specific files,
+# large binaries, and transient build artifacts.
+
 # Credentials and API keys -- never commit
 secrets/
 
-# Scratch space, if used
-.scratch/
+# Editor/project settings
+.vscode/
+.idea/
+
+# Node modules
+node_modules/
+
+# Python virtual environments and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Environment files and secrets
+*.env
+
+# Logs and temporary files
+*.log
+*.bak
+*.tmp
+*.swp
 
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Scratch space, if used
+.scratch/
+
+# Local/generated archives (ignore but note these were present earlier)
+*.zip
+
