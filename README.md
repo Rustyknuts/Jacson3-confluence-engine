@@ -1,3 +1,20 @@
+# Jacson3 Confluence Engine
+
+This repository contains the Jacson3 Confluence Engine: tools, documentation,
+and dashboard assets used to support the Jacson3 investment portfolio project.
+
+Contents overview:
+- `dashboard/` — HTML prototype and frontend assets
+- `pine-script/` — TradingView Pine Script alerts
+- `docs/` — design docs and specifications
+- `data/` — watchlists and archived datasets
+
+Key notes:
+- WSAPT confluence strategy and multi-indicator tooling are central to this
+  project. See `docs/` and `CHECKLISTS/` for detailed design references.
+- Do not commit secrets: `secrets/` is excluded via `.gitignore`.
+
+Contact: Rusty (Rustyknuts)
 # Jacson3 Investment Portfolio
 
 Personal investment portfolio management system: a WSAPT (dual-level stop-loss/accumulation) risk engine, a multi-indicator "Seeking Confluence" scoring strategy, a live dashboard, TradingView Pine Script alerts, and supporting macro/returns tooling.
