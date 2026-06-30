@@ -22,14 +22,15 @@ Goal: Master_Watchlist is fully columned, formula-verified, and has zero ambigui
 
 ## Before this phase is "done"
 
-- [ ] Get one real, single-source, timestamped TradingView price for CEN
-- [ ] Get one real, single-source, timestamped TradingView price for MEL
-- [ ] Get one real, single-source, timestamped TradingView price for BABA
-- [ ] Confirm Active Trailing assets populate Tight/Wide/Accum Z1 correctly once price + ATR are entered
-- [ ] **Calibrate Core Accumulation's wide stop properly**: for each of BTC, GOOG, AMZN, NVDA, IAA, TSLA, open the real chart, find the actual VRVP POC, decide the buffer below it, and enter that POC value into column J (Accumulation 2). Column H currently shows a flagged placeholder formula (`Close − 4×ATR`) wherever J is still 0 — that placeholder is not a considered number, replace it deliberately per asset, don't just accept it.
-- [ ] Decide: do columns Q–T (RSI, Bollinger, VRVP, Pattern) get a standardized text convention now (e.g. exactly "Bullish"/"Neutral"/"Bearish" for the ones that support it) or stay free-form?
-  - [ ] If standardizing: update the column header comments to state the exact allowed values
-  - [ ] If standardizing: extend the Confluence Score formula (column U) to read from the newly-standardized columns, not just P and L
+- [x] Get one real, single-source, timestamped TradingView price for CEN — **done: Close 9.99, ATR 0.371. Peak Price is still a placeholder (set equal to Close) — real 52-week high not yet located.**
+- [x] Get one real, single-source, timestamped TradingView price for MEL — **done: Close 5.75, ATR 0.170, 52wk high 6.04. Fully clean, no placeholders.**
+- [x] Get one real, single-source, timestamped TradingView price for BABA — **done: Close 94.81, ATR 3.52, 52wk high 192.13. Fully clean, no placeholders. Note: ~51% off 52wk high, a real large drawdown, not a data error.**
+- [x] Confirm Active Trailing assets populate Tight/Wide/Accum Z1 correctly once price + ATR are entered — **confirmed for CEN, MEL, BABA**
+- [ ] Find CEN's real 52-week high on TradingView and replace the current placeholder Peak Price (currently set equal to Close as a non-fabricated stand-in)
+- [x] **BTC wide stop calibrated**: POC read from 12-month Fixed Range Volume Profile = $68,308. Wide stop = POC × 0.65 (35% buffer) = $44,400.20. BTC is a special case — see ASSUMPTIONS_REGISTER.md §1 for full reasoning (its historical 50-80% drawdowns are normal cyclical behavior, not thesis failure, so a POC-percentage buffer fits better than an ATR multiple here).
+- [x] **GOOG/AMZN/NVDA/IAA/TSLA wide stop formula decided**: these five use the same formula as Active Trailing's wide stop (`Close − 2.5×ATR`), not a POC buffer — see ASSUMPTIONS_REGISTER.md §2. POC (column J) is no longer part of their wide-stop calculation; it remains available for manual accumulation-zone reference only.
+- [ ] Confirm each of GOOG/AMZN/NVDA/IAA/TSLA's resulting wide stop (now live via the ATR formula) looks sensible against their real charts — this is a sanity check, not a fresh calibration, since the formula is already the same one validated for Active Trailing assets
+- [x] Decide: do columns Q–T (RSI, Bollinger, VRVP, Pattern) get a standardized text convention now (e.g. exactly "Bullish"/"Neutral"/"Bearish" for the ones that support it) or stay free-form? — **decided: stay free-form for now, revisit once Phase 2 (Pine Script) clarifies what the alert/webhook payloads actually need.** Confluence Score continues to read only Larsson Line (P) + Global Analyst Macro (L) until this is revisited.
 - [ ] Recalculate the full workbook and confirm zero formula errors (`recalc` or equivalent — don't eyeball it)
 - [ ] Spot-check at least 3 Active Trailing rows by hand: pick an asset, manually compute Tight Stop = Close − 1.5×ATR, confirm the sheet matches
 - [ ] Spot-check at least 1 Core Accumulation row by hand: confirm column G shows "n/a (no tight stop)" and column H reflects the POC-buffer logic, not a generic ATR multiple
@@ -37,4 +38,5 @@ Goal: Master_Watchlist is fully columned, formula-verified, and has zero ambigui
 ## Sign-off
 
 - [ ] You've personally opened the sheet (not just read Claude's description of it) and confirmed the above
+- [ ] **Note added 2026-06-30:** today's session found and removed a stale nested duplicate of the entire repo (`jacson3-portfolio-project/` subtree, commit `d90e34e`) — if anything in this checklist seems to contradict what's actually on disk, re-check you're looking at the root-level files, not a cached/duplicate copy. See `.claude/skills/jacson3-folder-tidyup/SKILL.md` if this happens again.
 - [ ] Update `DEVELOPMENT_PLAN.md`'s "Current Phase" line to Phase 2 once this is checked off

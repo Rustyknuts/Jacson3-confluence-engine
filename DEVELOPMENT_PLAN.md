@@ -2,26 +2,31 @@
 
 **Status:** Living document. Update the "Current Phase" line below as you move through phases — this is the one place to check for where the project actually stands.
 
-**Current Phase:** Phase 1 (Data Layer Lock) — substantially complete, pending user sign-off. Phase 3 Path A tooling built in parallel (safe — import script has no Phase 2 dependency).
+**Current Phase:** Phase 1 (Data Layer Lock) — substantially complete, pending formal sign-off. Phase 3 Path A tooling built in parallel. Phase 5C Steps 1–2 complete (ASB Securities verified, Moomoo connected as "Personal-MooMoo").
 
 ## Session Close-Out — 2026-06-30
 
 ### Changed this session
-- `scripts/tv-import.gs` — created: Google Apps Script with "Jacson3 Portfolio" custom menu, HTML paste dialog, RFC-4180 CSV parser, TV header alias mapping, exchange-prefix stripping, TV_Imports tab writer (creates tab on first run, clears and rewrites on each import)
-- `scripts/TV_Imports_schema.md` — created: TV_Imports column layout (A–H), TradingView Screener column setup guide, XLOOKUP formula templates for price/ATR/RSI/per-row timestamp/freshness badge, 10-item post-import verification checklist
-- `FOLDER_STRUCTURE.md` — updated: documents `scripts/` directory and its purpose
-- `.claude/skills/jacson3-project-manager/SKILL.md` — installed: skill was missing from `.claude/skills/`; diagnosed via `ls`, stub created, then replaced with full 215-line file from downloaded zip
-- `CHECKLISTS/03-live-data-wiring.md` — Path A decision ticked; install-and-test pre-steps added
-- `ASSUMPTIONS_REGISTER.md` — entry #8 added: `STRIP_EXCHANGE_PREFIX = true` default in tv-import.gs
-- Decision: Phase 3 Path A chosen — TV CSV → TV_Imports tab via Apps Script (not webhook path)
+- `scripts/tv-import.gs` — created: Google Apps Script import engine (custom menu, HTML paste dialog, RFC-4180 CSV parser, TV header alias mapping, exchange-prefix stripping, TV_Imports tab writer)
+- `scripts/TV_Imports_schema.md` — created: TV_Imports column layout A–H, TradingView Screener setup guide, XLOOKUP formula templates, 10-item post-import verification checklist
+- `FOLDER_STRUCTURE.md` — updated: documents scripts/ directory
+- `CLAUDE.md` — added to repo root
+- `.claude/skills/jacson3-project-manager/SKILL.md` — diagnosed missing, full 215-line version installed from zip; verify-before-trusting rule added to multi-agent section; UTF-8 BOM removed
+- `.claude/skills/jacson3-folder-tidyup/SKILL.md` — new skill: Zone 1 (repo duplicates via git log) + Zone 2 (Downloads pile-up via filename clustering + mtime)
+- `CHECKLISTS/03-live-data-wiring.md` — full rewrite: Path A stated as settled, Step 1–5 action structure
+- `CHECKLISTS/01-data-layer.md` — synced from Claude.ai session: CEN/MEL/BABA prices confirmed, BTC wide stop calibrated (35% below POC at $68,308 → ~$44,400), GOOG/AMZN/NVDA/IAA/TSLA wide stop formula decided (Close − 2.5×ATR, same as Active Trailing), Q–T columns left free-form pending Phase 2
+- `CHECKLISTS/05c-portfolio-holdings.md` — Steps 1–2 checked off: ASB Securities confirmed empty and left as dormant record; Moomoo connected to Sharesight as "Personal-MooMoo", first sync confirmed
+- `ASSUMPTIONS_REGISTER.md` — entry #8 added: STRIP_EXCHANGE_PREFIX=true default in tv-import.gs
+- `jacson3-portfolio-project/` subtree (25 files + zip) — removed from git: stale nested duplicate, zero commits since b88ae0a vs active root-level history in bb9dc38/23bd6c6
+- Downloads `Archive/` — created; 6 stale/duplicate files moved in (filesystem only, no git commit)
 
 ### Still open
-- `tv-import.gs` not yet installed in the Sheet — file exists in repo but has not been pasted into Extensions → Apps Script
-- Phase 1 sign-off — pending user personally opening the sheet to verify formulas (checklist item cannot be ticked on behalf of the user)
-- Core Accumulation POC buffers — still placeholders for GOOG, AMZN, NVDA, IAA, TSLA (BTC calibrated; others deferred)
+- `CHECKLISTS/01-data-layer.md` remaining items: find CEN's real 52-week high (Peak Price is currently a placeholder set equal to Close); confirm GOOG/AMZN/NVDA/IAA/TSLA wide stops look sensible against real charts; recalculate workbook; spot-check formulas; formal sign-off (user personally opens the sheet)
+- `tv-import.gs` not yet installed in the Sheet — Step 1 of Phase 3, the single most concrete open action
+- `CHECKLISTS/05c-portfolio-holdings.md` — Step 3 is next: email api@sharesight.com to request API access; Steps 4–5 follow once credentials exist
 
 ### Start here next session
-Open the Sheet → Extensions → Apps Script → paste the contents of `scripts/tv-import.gs` → Save → reload the Sheet → confirm the "Jacson3 Portfolio" menu appears, then run a first import from TradingView Screener.
+Install `scripts/tv-import.gs` into the Sheet (Extensions → Apps Script → paste → Save → reload → confirm "Jacson3 Portfolio" menu appears), then run a first import from TradingView Screener.
 
 ---
 

@@ -6,16 +6,16 @@ Goal: Jacson3_Holdings and Personal_Holdings tabs in Master_Watchlist DB are pop
 
 ## Step 1 — Tidy up Sharesight portfolios (you, not Claude)
 
-- [ ] Confirm "Jacson3 ASB Securities" is genuinely empty (sold down as expected)
-- [ ] Decide: archive/retire it in Sharesight, or leave it as a dormant historical record — this was explicitly left open, not yet decided
-- [ ] Confirm "Jacson3 Sharesies" and "Jacson3 Crypto" are both correctly attributed to Jacson3 Ltd (they are — both are Jacson3, just split by broker)
+- [x] Confirm "Jacson3 ASB Securities" is genuinely empty (sold down as expected) — **verified, zero balance**
+- [x] Decide: archive/retire it in Sharesight, or leave it as a dormant historical record — **decided: leave as a dormant historical record for now.** Revisit if this becomes problematic (e.g. it starts showing up in reports or confusing the holdings pull).
+- [x] Confirm "Jacson3 Sharesies" and "Jacson3 Crypto" are both correctly attributed to Jacson3 Ltd (they are — both are Jacson3, just split by broker)
 
 ## Step 2 — Connect Moomoo to Sharesight (you, not Claude)
 
-- [ ] In the Moomoo app: Account → More → Tax Documents → Sync to Sharesight → Auto Sync → Connect Now
-- [ ] Authorise the connection and create a new Sharesight portfolio for it — suggested name **"Personal Moomoo"** to match the existing "Jacson3 ___" naming convention, but you can call it anything
-- [ ] Note: trades sync on a T+1 basis (a trade made today appears in Sharesight the next evening) — this is not a live feed, budget for that lag when thinking about how current this data can be
-- [ ] Confirm at least one trade has synced successfully before moving on
+- [x] In the Moomoo app: Account → More → Tax Documents → Sync to Sharesight → Auto Sync → Connect Now
+- [x] Authorise the connection and create a new Sharesight portfolio for it — **actual name: "Personal-MooMoo"** (exact casing/hyphen matters for lookups — corrected in `Personal_Holdings` column B)
+- [x] Note: trades sync on a T+1 basis — first sync confirmed received, faster than the 48hr estimate
+- [x] Confirm at least one trade has synced successfully before moving on — **confirmed**
 
 ## Step 3 — Request Sharesight API access (you, not Claude)
 
