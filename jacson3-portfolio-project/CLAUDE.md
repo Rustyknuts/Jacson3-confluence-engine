@@ -2,6 +2,17 @@
 
 Jacson3 Ltd is building tooling (Google Sheets data layer, TradingView Pine Script alerts, a Looker Studio dashboard) to manage its investment portfolio: a WSAPT dual-level stop/accumulation framework cross-checked by a multi-indicator "Confluence" score, feeding mobile alerts so positions don't require constant manual chart-watching.
 
+## File links — always provide them when asking for a visual check
+Whenever you suggest that the user should visually verify, open, or check a file, **always provide a direct link or file path to the current instance of that file** at the same time. Never just name the file — give them something they can click or navigate to immediately.
+
+Examples of when this applies:
+- "Open Master_Watchlist and confirm column A tickers are bare" → provide the Google Sheets link
+- "Check the DEVELOPMENT_PLAN.md Current Phase line" → provide the file path or GitHub link
+- "Verify the dashboard renders correctly" → provide the local file path or hosted URL
+- "Confirm the Sharesight portfolio shows the correct balance" → provide the Sharesight URL
+
+For Google Sheets and Google Drive files, use the actual shareable URL if known. For local project files, use the full path relative to the project root. For GitHub, use the permalink to the file on the current branch.
+
 ## Goal
 
 Fund a healthy, active retirement: target a 25% Target Total Annual Return (TTAR) after fees and tax, with investment proceeds intended to be drawn down to support lifestyle. Automation should reduce — not increase — trade frequency; alerts inform a decision, they never auto-execute one.

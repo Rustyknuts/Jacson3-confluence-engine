@@ -44,6 +44,14 @@ jacson3-portfolio/
 ├── pine-script/
 │   └── jacson3-wsapt-overlay.pine       ← created in Phase 2
 │
+├── scripts/
+│   ├── tv-import.gs                     ← Google Apps Script: TradingView CSV → TV_Imports tab
+│   │                                      Install via Extensions → Apps Script in the Sheet.
+│   │                                      Adds "Jacson3 Portfolio" menu with Import dialog.
+│   └── TV_Imports_schema.md             ← TV_Imports tab column layout, TradingView Screener
+│                                           column setup, and XLOOKUP formula templates for
+│                                           Master_Watchlist (price, ATR, RSI, freshness badge)
+│
 ├── secrets/                             ← see "Secrets" section below — NEVER commit this folder
 │
 └── .gitignore                           ← must include `secrets/` — see below
@@ -55,6 +63,7 @@ jacson3-portfolio/
 - **`data/` separate from `dashboard/`** — the spreadsheet is the source of truth; the dashboard is a consumer of it. Keeping them in separate folders reinforces that the dashboard should never be where data gets manually edited.
 - **`pine-script/` as its own top-level folder, not nested under `dashboard/`** — Pine Script lives and is tested entirely inside TradingView, not in this repo's runtime. It's here for version control and so Claude can read/edit it, but it has no folder-structure relationship to the dashboard code.
 - **No `src/` split for the dashboard yet** — the current build is intentionally one self-contained file (that's also why it has no CDN dependencies). Don't split it into multiple files until it's actually too large to work with as one — premature splitting just adds a build step for no current benefit.
+- **`scripts/` for Google Apps Script and other glue code** — anything that runs inside Google Workspace (Apps Script bound to the Sheet) or serves as a data-pipeline helper lives here. Apps Script `.gs` files are authored locally and pasted into the Sheet's script editor; they are version-controlled here but executed in Google's cloud, not locally.
 
 ## Secrets — read this before Phase 3 or 5C
 

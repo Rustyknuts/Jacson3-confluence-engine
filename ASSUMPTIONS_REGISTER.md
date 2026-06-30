@@ -118,6 +118,20 @@ This document exists because several decisions in this project were made as reas
 
 ---
 
+## 8. tv-import.gs defaults to stripping exchange prefixes from TV tickers
+
+**Status:** 🟡 Active assumption
+
+**What was decided:** `STRIP_EXCHANGE_PREFIX = true` in `scripts/tv-import.gs`. When TradingView Screener exports tickers with an exchange prefix (e.g. `NZX:MEL`, `NASDAQ:AAPL`, `COINBASE:BTCUSD`), the script strips everything up to and including the colon, storing only the bare symbol in TV_Imports column B.
+
+**Reasoning at the time:** Master_Watchlist column A uses bare tickers throughout (e.g. `MEL`, `AAPL`, `BTC`). XLOOKUP matches TV_Imports!B to Master_Watchlist!A by exact string — a single-character mismatch silently leaves every price blank with no error. Stripping the prefix on import is lower-risk than requiring the user to maintain a parallel exchange-prefix convention in both places. The assumption is that all tickers in this watchlist are unambiguous without their prefix, which holds for the current holdings (none share a bare ticker across two exchanges).
+
+**Why this might need revisiting:** if a new asset is added whose bare ticker collides with an existing one on a different exchange, stripping the prefix would cause a silent wrong-row XLOOKUP match. Also, if Master_Watchlist column A is ever updated to use full TV symbols (e.g. `NZX:MEL`) — for example to make Pine Script cross-references easier — the flag must be flipped to `false`.
+
+**Revisit when:** any new asset is added whose bare ticker could be ambiguous across exchanges; or if XLOOKUP returns wrong prices for a specific ticker after an import.
+
+---
+
 ## Adding new entries
 
 Format for new entries: **what was decided**, **the reasoning at the time** (so a future session understands why it seemed right, not just what was chosen), **why this might need revisiting** (the specific failure mode to watch for, not just "things change"), and **revisit when** (a concrete trigger, not "eventually"). An assumption without a revisit trigger tends to never get revisited.

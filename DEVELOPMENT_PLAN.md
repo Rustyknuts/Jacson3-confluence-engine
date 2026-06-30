@@ -2,7 +2,26 @@
 
 **Status:** Living document. Update the "Current Phase" line below as you move through phases — this is the one place to check for where the project actually stands.
 
-**Current Phase:** Phase 1 (Data Layer Lock) — substantially complete, verifying before moving to Phase 2.
+**Current Phase:** Phase 1 (Data Layer Lock) — substantially complete, pending user sign-off. Phase 3 Path A tooling built in parallel (safe — import script has no Phase 2 dependency).
+
+## Session Close-Out — 2026-06-30
+
+### Changed this session
+- `scripts/tv-import.gs` — created: Google Apps Script with "Jacson3 Portfolio" custom menu, HTML paste dialog, RFC-4180 CSV parser, TV header alias mapping, exchange-prefix stripping, TV_Imports tab writer (creates tab on first run, clears and rewrites on each import)
+- `scripts/TV_Imports_schema.md` — created: TV_Imports column layout (A–H), TradingView Screener column setup guide, XLOOKUP formula templates for price/ATR/RSI/per-row timestamp/freshness badge, 10-item post-import verification checklist
+- `FOLDER_STRUCTURE.md` — updated: documents `scripts/` directory and its purpose
+- `.claude/skills/jacson3-project-manager/SKILL.md` — installed: skill was missing from `.claude/skills/`; diagnosed via `ls`, stub created, then replaced with full 215-line file from downloaded zip
+- `CHECKLISTS/03-live-data-wiring.md` — Path A decision ticked; install-and-test pre-steps added
+- `ASSUMPTIONS_REGISTER.md` — entry #8 added: `STRIP_EXCHANGE_PREFIX = true` default in tv-import.gs
+- Decision: Phase 3 Path A chosen — TV CSV → TV_Imports tab via Apps Script (not webhook path)
+
+### Still open
+- `tv-import.gs` not yet installed in the Sheet — file exists in repo but has not been pasted into Extensions → Apps Script
+- Phase 1 sign-off — pending user personally opening the sheet to verify formulas (checklist item cannot be ticked on behalf of the user)
+- Core Accumulation POC buffers — still placeholders for GOOG, AMZN, NVDA, IAA, TSLA (BTC calibrated; others deferred)
+
+### Start here next session
+Open the Sheet → Extensions → Apps Script → paste the contents of `scripts/tv-import.gs` → Save → reload the Sheet → confirm the "Jacson3 Portfolio" menu appears, then run a first import from TradingView Screener.
 
 ---
 
