@@ -1,4 +1,4 @@
-﻿---
+---
 name: jacson3-project-manager
 description: Project hygiene and continuity skill for the Jacson3 Investment Portfolio project. Use whenever a session involves completing a task and needing to update a checklist; making a judgment call that should be logged; changing a formula or spreadsheet structure before which an archive snapshot is needed; finishing a session and needing a clean handoff summary; discovering a new task mid-session that isn't yet in a checklist; noticing drift between what a document says and what was actually built; or being asked to "tidy up", "update the checklists", "archive the workbook", "log an assumption", "commit this", or "what should we do next session". Also trigger when Claude Code and this session are running in parallel — surface conflicts before they become merge problems.
 ---
@@ -33,6 +33,8 @@ The files most likely to need coordination, in order of risk:
 2. `scripts/` directory — Claude Code is building here; don't create files here from this session without checking
 3. `CHECKLISTS/` files — this session owns these; Claude Code should only read them, not write
 4. `docs/` files — this session owns these; Claude Code should only read them
+
+**Never trust a description of a file's state without checking it.** If the other environment (Claude.ai or Claude Code) reports having created, modified, or restructured a file, verify the actual current content in this repo (`cat`, `git diff`, `git log`) before editing, building on, or committing anything based on that description. The two environments are not automatically synced — a file described as "already restructured" in one place may not exist that way on disk. This already caused one real instance of wasted work in this project (a checklist restructure that existed only in a Claude.ai session, not in the repo) — treat git as ground truth, always, not a secondhand description.
 
 ---
 
