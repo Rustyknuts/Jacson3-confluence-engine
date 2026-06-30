@@ -1,9 +1,0 @@
-# Credentials and API keys -- never commit
-secrets/
-
-# Scratch space, if used
-.scratch/
-
-# OS junk
-.DS_Store
-Thumbs.db
